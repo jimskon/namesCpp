@@ -1,4 +1,4 @@
-#CXX = clang++
+CXX = g++
 CXXFLAGS = -O2 -std=c++11 -I.. -Wall -Wextra -pthread
 
 PREFIX = /usr/local
@@ -23,8 +23,8 @@ PutHTML:
 	echo "Current contents of your HTML directory: "
 	ls -l /var/www/html/namesCpp/
 
-test : test.cc httplib.h Makefile
-	$(CXX) -o test $(CXXFLAGS) test.cc $(OPENSSL_SUPPORT) $(ZLIB_SUPPORT) $(BROTLI_SUPPORT)
+test : test.cpp httplib.h Makefile
+	$(CXX) -o test $(CXXFLAGS) test.cpp $(OPENSSL_SUPPORT) $(ZLIB_SUPPORT) $(BROTLI_SUPPORT)
 
 NameEntry.o: NameEntry.cpp NameEntry.h
 	$(CC) $(CFLAGS) NameEntry.cpp -c
@@ -32,15 +32,15 @@ NameEntry.o: NameEntry.cpp NameEntry.h
 NameMap.o: NameMap.cpp NameMap.h NameEntry.h
 	$(CC) $(CFLAGS) NameMap.cpp -c
 
-namesAPI : namesAPI.cc httplib.h NameEntry.o NameMap.o
-	$(CXX) -o namesAPI $(CXXFLAGS) namesAPI.cc $(OPENSSL_SUPPORT) $(ZLIB_SUPPORT) $(BROTLI_SUPPORT) NameEntry.o NameMap.o
+namesAPI : namesAPI.cpp httplib.h NameEntry.o NameMap.o
+	$(CXX) -o namesAPI $(CXXFLAGS) namesAPI.cpp $(OPENSSL_SUPPORT) $(ZLIB_SUPPORT) $(BROTLI_SUPPORT) NameEntry.o NameMap.o
 
-namesconsole : namesAPI.cc NameEntry.o NameMap.o namesconsole.cc
-	$(CXX) -o namesconsole namesconsole.cc NameEntry.o NameMap.o
+namesconsole : namesAPI.cpp NameEntry.o NameMap.o namesconsole.cpp
+	$(CXX) -o namesconsole namesconsole.cpp NameEntry.o NameMap.o
 
 pem:
 	openssl genrsa 2048 > key.pem
 	openssl req -new -key key.pem | openssl x509 -days 3650 -req -signkey key.pem > cert.pem
 
 clean:
-	rm skon *.pem
+	rm *.o namesconsole namesAPI  *.pem
