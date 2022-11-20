@@ -13,7 +13,7 @@ ZLIB_SUPPORT = -DCPPHTTPLIB_ZLIB_SUPPORT -lz
 BROTLI_DIR = $(PREFIX)/opt/brotli
 BROTLI_SUPPORT = -DCPPHTTPLIB_BROTLI_SUPPORT -I$(BROTLI_DIR)/include -L$(BROTLI_DIR)/lib -lbrotlicommon -lbrotlienc -lbrotlidec
 
-all: namesAPI PutHTML
+all: namesAPI PutHTML namesconsole
 
 PutHTML:
 	cp namelookup.html /var/www/html/namesCpp/
@@ -32,8 +32,11 @@ NameEntry.o: NameEntry.cpp NameEntry.h
 NameMap.o: NameMap.cpp NameMap.h NameEntry.h
 	$(CC) $(CFLAGS) NameMap.cpp -c
 
-namesAPI : namesAPI.cc httplib.h Makefile NameEntry.o NameMap.o
+namesAPI : namesAPI.cc httplib.h NameEntry.o NameMap.o
 	$(CXX) -o namesAPI $(CXXFLAGS) namesAPI.cc $(OPENSSL_SUPPORT) $(ZLIB_SUPPORT) $(BROTLI_SUPPORT) NameEntry.o NameMap.o
+
+namesconsole : namesAPI.cc NameEntry.o NameMap.o namesconsole.cc
+	$(CXX) -o namesconsole namesconsole.cc NameEntry.o NameMap.o
 
 pem:
 	openssl genrsa 2048 > key.pem
