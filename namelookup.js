@@ -1,7 +1,9 @@
 // JavaScript for Name Data Lookup Demo
 // Jim Skon, Kenyon College, 2019
 var searchType;  // Save search type here
-const baseUrl = 'http://3.134.78.249:5002';
+const baseUrl = 'http://192.168.100.160:5002';
+//const baseUrl = 'https://jimskon.com:5002';
+//const baseUrl = 'https://65.60.203.69:5002';
 
 console.log("Start!");
 searchType="Last";

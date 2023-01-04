@@ -1,3 +1,12 @@
+# Make file for namesCpp
+# Must do this first:
+#   sudo apt-get install libssl-dev
+#   sudo apt-get install zlib1g-dev
+#   sudo apt install libbrotli-dev
+#
+#   sudo mkdir /var/www/html/namesCpp/
+#   sudo chown ubuntu /var/www/html/namesCpp/
+
 CXX = g++
 CXXFLAGS = -O2 -std=c++11 -I.. -Wall -Wextra -pthread
 
