@@ -19,8 +19,8 @@ OPENSSL_SUPPORT = -DCPPHTTPLIB_OPENSSL_SUPPORT -I$(OPENSSL_DIR)/include -L$(OPEN
 
 ZLIB_SUPPORT = -DCPPHTTPLIB_ZLIB_SUPPORT -lz
 
-BROTLI_DIR = $(PREFIX)/opt/brotli
-BROTLI_SUPPORT = -DCPPHTTPLIB_BROTLI_SUPPORT -I$(BROTLI_DIR)/include -L$(BROTLI_DIR)/lib -lbrotlicommon -lbrotlienc -lbrotlidec
+#BROTLI_DIR = $(PREFIX)/opt/brotli
+#BROTLI_SUPPORT = -DCPPHTTPLIB_BROTLI_SUPPORT -I$(BROTLI_DIR)/include -L$(BROTLI_DIR)/lib -lbrotlicommon -lbrotlienc -lbrotlidec
 
 all: namesAPI PutHTML namesconsole
 
