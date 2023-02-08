@@ -15,6 +15,6 @@
 
 ## Make and run
  - ```make```
- - ```./namesAPI
+ - ```./namesAPI```
 
 ## Go to your VM URL/namesCpp/namelookup.html
