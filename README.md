@@ -3,8 +3,9 @@
 ## Uses cpp-httplib for the microservice
  - ```https://github.com/yhirose/cpp-httplib```
  
-## Install SSL sevices
+## Install SSL and compression services
  - ```sudo apt-get install libssl-dev```
+ - ```sudo apt-get install libz-dev```
  
 ## Set Javascript IP address to your VM address
  - Edit ```namelookup.js``` so that ```baseUrl``` is your VM's IP address
